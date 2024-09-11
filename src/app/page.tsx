@@ -1,6 +1,7 @@
-"use client"
+"use client";
+
 import { useState, useEffect } from 'react';
-import { fetchItems } from './utils/api';
+import { fetchItems } from './utils/api'; // Ensure this path is correct and update if necessary
 
 type Item = {
   _id: string;
@@ -19,7 +20,7 @@ export default function Home() {
     async function fetchAndSetItems() {
       try {
         const fetchedItems = await fetchItems(category);
-        setItems(fetchedItems.data);
+        setItems(fetchedItems.data || []); // Ensure data is properly extracted
       } catch (err) {
         setError('Failed to fetch items');
         console.error('Error fetching items:', err);
@@ -53,7 +54,7 @@ export default function Home() {
           <option value="Productivity">Productivity</option>
           <option value="Arts">Arts</option>
           <option value="Social">Social</option>
-          <option value="Home ">Home</option>
+          <option value="Home">Home</option>
         </select>
       </div>
 
@@ -67,12 +68,8 @@ export default function Home() {
               <p className="mt-2 text-gray-600">{item.description}</p>
             </div>
             <div className="flex text-gray-400 justify-between mx-4 my-2 p-4">
-              <span>
-                {item.category}
-              </span>
-              <span>
-                {item.createdAt.split('T')[0]}
-              </span>
+              <span>{item.category}</span>
+              <span>{item.createdAt.split('T')[0]}</span>
             </div>
           </div>
         ))}
