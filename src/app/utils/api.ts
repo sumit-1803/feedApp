@@ -1,14 +1,14 @@
 export async function fetchItems(category: string | null) {
     const query = category ? `?category=${category}` : '';
-    
+  
     try {
-      const response = await fetch(`https://feedappbackendd-o43cy6fdn-sumit-1803s-projects.vercel.app/api/items${query}`, {
+      const response = await fetch(`https://feedappbackendd-mg4ze6mt2-sumit-1803s-projects.vercel.app/api/items${query}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           // Add any other required headers here
         },
-        credentials: 'include', // Include credentials if your backend needs them
+        credentials: 'include', // Include credentials if needed
       });
   
       if (!response.ok) {
