@@ -15,7 +15,7 @@ export async function GET(request: Request) {
     const filter = category ? { category } : {}; 
     const items = await Item.find(filter);
     return NextResponse.json(items);
-  } catch (err:any) {
+  } catch (err) {
     return NextResponse.error().json();
   }
 }
