@@ -34,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJZYU1aRGFXT0UyWGNwblhZaE1QZzZrME0iLCJpYXQiOjE3MjYwNzE5OTgsImF1ZCI6ImZlZWRhcHBiYWNrZW5kZC00eWpwbjIybnktc3VtaXQtMTgwM3MtcHJvamVjdHMudmVyY2VsLmFwcCIsInVzZXJuYW1lIjoic3VtaXQtMTgwMyIsInN1YiI6InNzby1wcm90ZWN0aW9uIn0.FMh5J-WNajZwNW3Nf4vrJHhDKm_LFswOsFYbAPZ9iBw

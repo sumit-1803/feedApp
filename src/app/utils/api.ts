@@ -1,8 +1,8 @@
 // utils/api.ts
 
 export async function fetchItems(category: string | null) {
-    // Set the hardcoded cookie before making the request
-    document.cookie = "_vercel_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJZYU1aRGFXT0UyWGNwblhZaE1QZzZrME0iLCJpYXQiOjE3MjYwNzE5OTgsImF1ZCI6ImZlZWRhcHBiYWNrZW5kZC00eWpwbjIybnktc3VtaXQtMTgwM3MtcHJvamVjdHMudmVyY2VsLmFwcCIsInVzZXJuYW1lIjoic3VtaXQtMTgwMyIsInN1YiI6InNzby1wcm90ZWN0aW9uIn0.FMh5J-WNajZwNW3Nf4vrJHhDKm_LFswOsFYbAPZ9iBw; path=/; domain=feedappfrontend.com; secure; samesite=strict";
+    // // Set the hardcoded cookie before making the request
+    // document.cookie = "_vercel_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJZYU1aRGFXT0UyWGNwblhZaE1QZzZrME0iLCJpYXQiOjE3MjYwNzE5OTgsImF1ZCI6ImZlZWRhcHBiYWNrZW5kZC00eWpwbjIybnktc3VtaXQtMTgwM3MtcHJvamVjdHMudmVyY2VsLmFwcCIsInVzZXJuYW1lIjoic3VtaXQtMTgwMyIsInN1YiI6InNzby1wcm90ZWN0aW9uIn0.FMh5J-WNajZwNW3Nf4vrJHhDKm_LFswOsFYbAPZ9iBw; path=/; domain=feedappfrontend.com; secure; samesite=strict";
     
     const query = category ? `?category=${category}` : '';
     
@@ -11,7 +11,6 @@ export async function fetchItems(category: string | null) {
       headers: {
         'Content-Type': 'application/json',
       },
-      credentials: 'include', // This sends cookies with the request
     });
   
     // Check the response status and content type
@@ -20,7 +19,7 @@ export async function fetchItems(category: string | null) {
     }
   
     const contentType = response.headers.get('Content-Type');
-    if (contentType && contentType.includes('application/json')) {
+    if (contentType && contentType.includes('application/json')) {  
       const data = await response.json();
       return { data };
     } else {
