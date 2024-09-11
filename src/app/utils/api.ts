@@ -1,7 +1,7 @@
 // utils/api.ts
 export async function fetchItems(category: string | null) {
     const query = category ? `?category=${category}` : '';
-    const response = await fetch(`https://feedappbackendd-cnunkwxp7-sumit-1803s-projects.vercel.app/api/items${query}`);
+    const response = await fetch(`https://feedappbackendd-cg0pxqu9a-sumit-1803s-projects.vercel.app/api/items${query}`);
     
     // Check the response status and content type
     if (!response.ok) {
