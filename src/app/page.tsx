@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { fetchItems } from './utils/api'; // Ensure this path is correct and update if necessary
+import { fetchItems } from '../utils/api'; // Ensure this path is correct
 
 type Item = {
   _id: string;

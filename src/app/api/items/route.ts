@@ -1,23 +1,21 @@
 import { NextResponse } from 'next/server';
 import mongoose from 'mongoose';
-import Item from '../../../../models/Item'; 
+import Item from '../../../models/Item'; 
 
-// Connect to MongoDB
-const connectDb = async () => {
-  if (mongoose.connections[0].readyState) {
-    return;
-  }
-  await mongoose.connect("mongodb+srv://sumit:1212@test.vxqgx.mongodb.net/test");
+const connectToDatabase = async () => {
+  if (mongoose.connection.readyState === 1) return;
+  await mongoose.connect(process.env.MONGODB_URI || 'your-mongodb-uri'); // Use environment variables for security
 };
 
-// Handle GET request
-export async function GET() {
-  await connectDb();
-  
+export async function GET(request: Request) {
   try {
-    const items = await Item.find({});
+    await connectToDatabase();
+    const url = new URL(request.url);
+    const category = url.searchParams.get('category');
+    const filter = category ? { category } : {}; 
+    const items = await Item.find(filter);
     return NextResponse.json(items);
-  } catch (err) {
-    return NextResponse.json({ error: (err as Error).message }, { status: 500 });
+  } catch (err:any) {
+    return NextResponse.error().json();
   }
 }
