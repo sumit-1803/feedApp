@@ -11,6 +11,7 @@ export async function fetchItems(category: string | null) {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials:'omit'
     });
   
     // Check the response status and content type
