@@ -15,15 +15,20 @@ export default function Home() {
   const [items, setItems] = useState<Item[]>([]);
   const [category, setCategory] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false); // New state for loading
 
   useEffect(() => {
     async function fetchAndSetItems() {
+      setLoading(true); // Set loading to true when starting fetch
       try {
         const fetchedItems = await fetchItems(category);
         setItems(fetchedItems.data || []); 
+        setError(null); // Clear any previous errors
       } catch (err) {
         setError('Failed to fetch items');
         console.error('Error fetching items:', err);
+      } finally {
+        setLoading(false); // Set loading to false when done
       }
     }
     fetchAndSetItems();
@@ -57,6 +62,12 @@ export default function Home() {
           <option value="Home">Home</option>
         </select>
       </div>
+
+      {loading && (
+        <div className="flex justify-center items-center py-10">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+        </div>
+      )}
 
       {error && <p className="text-red-500 text-center">{error}</p>}
 
