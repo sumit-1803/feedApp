@@ -17,6 +17,6 @@ export async function fetchItems(category: string | null) {
     return { data };
   } catch (error) {
     console.error('Error fetching items:', error);
-    throw error; // Re-throw the error for the caller to handle
+    throw error;
   }
 }

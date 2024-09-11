@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { fetchItems } from '../utils/api'; // Ensure this path is correct
+import { fetchItems } from '../utils/api'; 
 
 type Item = {
   _id: string;
@@ -20,7 +20,7 @@ export default function Home() {
     async function fetchAndSetItems() {
       try {
         const fetchedItems = await fetchItems(category);
-        setItems(fetchedItems.data || []); // Ensure data is properly extracted
+        setItems(fetchedItems.data || []); 
       } catch (err) {
         setError('Failed to fetch items');
         console.error('Error fetching items:', err);

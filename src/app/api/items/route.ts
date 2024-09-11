@@ -4,7 +4,7 @@ import Item from '../../../models/Item';
 
 const connectToDatabase = async () => {
   if (mongoose.connection.readyState === 1) return;
-  await mongoose.connect(process.env.MONGODB_URI || 'your-mongodb-uri'); // Use environment variables for security
+  await mongoose.connect(process.env.MONGODB_URI || 'your-mongodb-uri'); 
 };
 
 export async function GET(request: Request) {
@@ -15,7 +15,7 @@ export async function GET(request: Request) {
     const filter = category ? { category } : {}; 
     const items = await Item.find(filter);
     return NextResponse.json(items);
-  } catch (err) {
-    return NextResponse.error().json();
+  } catch (err: Error | any) {
+    return NextResponse.json({"error": err.message}, { status: 500 });
   }
 }
